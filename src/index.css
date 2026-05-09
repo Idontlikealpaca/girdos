@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: #080808;
+  color: #d4d4d4;
+}
+
+* {
+  box-sizing: border-box;
+}

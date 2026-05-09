@@ -1,0 +1,31 @@
+.container {
+  padding: 20px;
+  border: 1px solid #1e1e1e;
+  background-color: #080808;
+}
+
+.container h3 {
+  margin: 0 0 20px 0;
+  color: #639922;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.metric {
+  text-align: center;
+}
+
+.metric h4 {
+  margin: 0 0 10px 0;
+  color: #d4d4d4;
+}
+
+.metric p {
+  margin: 0;
+  font-size: 1.2em;
+  color: #639922;
+}

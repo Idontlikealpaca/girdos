@@ -1,0 +1,35 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #080808;
+  color: #d4d4d4;
+}
+
+.controls {
+  padding: 20px;
+  text-align: center;
+}
+
+.controls button {
+  padding: 10px 20px;
+  background-color: #639922;
+  color: #080808;
+  border: 1px solid #1e1e1e;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.controls button:disabled {
+  background-color: #2a2a2a;
+  cursor: not-allowed;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+}

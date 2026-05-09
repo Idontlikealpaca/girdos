@@ -1,0 +1,34 @@
+.container {
+  padding: 20px;
+  border: 1px solid #1e1e1e;
+  background-color: #080808;
+}
+
+.container h3 {
+  margin: 0 0 20px 0;
+  color: #639922;
+}
+
+.strip {
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  align-items: end;
+}
+
+.hour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30px;
+}
+
+.bar {
+  width: 20px;
+  border-radius: 2px;
+}
+
+.hour span {
+  margin-top: 5px;
+  font-size: 0.8em;
+}

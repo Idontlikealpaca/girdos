@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #1e1e1e;
+  background-color: #080808;
+  text-align: center;
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  color: #639922;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.2em;
+}
