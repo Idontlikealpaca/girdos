@@ -109,7 +109,12 @@ function mutate(chromosome: number[], rate: number = 0.12, sigma: number = 0.3):
   });
 }
 
-export function runNSGAII(popSize: number = 80, generations: number = 40, solarProfile: number[]): Population {
+export function runNSGAII(
+  popSize: number = 80,
+  generations: number = 40,
+  solarProfile: number[],
+  onProgress?: (generation: number) => void
+): Population {
   // Initialize population
   let population: Solution[] = [];
   for (let i = 0; i < popSize; i++) {
@@ -129,6 +134,11 @@ export function runNSGAII(popSize: number = 80, generations: number = 40, solarP
       if (offspring.length < popSize) {
         offspring.push(evaluateSolution(mutate(c2), solarProfile));
       }
+    }
+
+    // Report progress
+    if (onProgress) {
+      onProgress(gen + 1);
     }
 
     // Combine and select
