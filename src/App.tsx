@@ -12,7 +12,7 @@ function App() {
 
   const runOptimization = () => {
     setIsRunning(true);
-    const worker = new Worker(new URL('./workers/optimizationWorker.ts', import.meta.url));
+    const worker = new Worker(new URL('./workers/optimizationWorker.ts?worker', import.meta.url), { type: 'module' });
     worker.onmessage = (e) => {
       setPopulation(e.data);
       setIsRunning(false);
