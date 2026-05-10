@@ -37,7 +37,7 @@ const ParetoChart: React.FC = () => {
     <div className={styles.container}>
       <h3>Pareto Front</h3>
       <ResponsiveContainer width="100%" height={300}>
-        <ScatterChart data={data}>
+        <ScatterChart>
           <CartesianGrid stroke="#1e1e1e" />
           <XAxis type="number" dataKey="x" name="Cost (₩)" stroke="#d4d4d4" />
           <YAxis type="number" dataKey="y" name="Carbon (kgCO₂)" stroke="#d4d4d4" />
@@ -46,6 +46,7 @@ const ParetoChart: React.FC = () => {
             labelStyle={{ color: '#d4d4d4' }}
           />
           <Scatter
+            data={data}
             dataKey="z"
             fill="#2a2a2a"
             shape={(props: any) => {
