@@ -27,6 +27,15 @@ const ParetoChart: React.FC = () => {
     solution: sol,
   }));
 
+  const xs = data.map(d => d.x);
+  const ys = data.map(d => d.y);
+  const pad = (min: number, max: number) => {
+    const margin = (max - min) * 0.1 || max * 0.05;
+    return [Math.floor(min - margin), Math.ceil(max + margin)];
+  };
+  const xDomain = pad(Math.min(...xs), Math.max(...xs));
+  const yDomain = pad(Math.min(...ys), Math.max(...ys));
+
   const handleClick = (data: any) => {
     if (data && data.solution) {
       setSelectedSolution(data.solution);
@@ -39,11 +48,15 @@ const ParetoChart: React.FC = () => {
       <ResponsiveContainer width="100%" height={300}>
         <ScatterChart>
           <CartesianGrid stroke="#1e1e1e" />
-          <XAxis type="number" dataKey="x" name="Cost (₩)" stroke="#d4d4d4" />
-          <YAxis type="number" dataKey="y" name="Carbon (kgCO₂)" stroke="#d4d4d4" />
+          <XAxis type="number" dataKey="x" name="Cost (₩)" stroke="#d4d4d4" domain={xDomain} tickFormatter={(v) => `${(v/1000).toFixed(0)}k`} />
+          <YAxis type="number" dataKey="y" name="Carbon (kgCO₂)" stroke="#d4d4d4" domain={yDomain} />
           <Tooltip
             contentStyle={{ backgroundColor: '#080808', border: '1px solid #1e1e1e' }}
             labelStyle={{ color: '#d4d4d4' }}
+            formatter={(value: number, name: string) => [
+              name === 'Cost (₩)' ? `₩${value.toFixed(0)}` : `${value.toFixed(1)}`,
+              name,
+            ]}
           />
           <Scatter
             data={data}
@@ -52,7 +65,7 @@ const ParetoChart: React.FC = () => {
             shape={(props: any) => {
               const { cx, cy, payload } = props;
               const size = payload.isSelected ? 10 : 5;
-              const fill = payload.isPareto ? '#639922' : '#2a2a2a';
+              const fill = payload.isPareto ? '#639922' : '#4a4a4a';
               const stroke = payload.isSelected ? '#ffffff' : 'none';
               return (
                 <circle
