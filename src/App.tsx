@@ -13,7 +13,7 @@ function App() {
   const runOptimization = () => {
     setIsRunning(true);
     setProgress(0);
-    const worker = new Worker(new URL('./workers/optimizationWorker.ts?worker', import.meta.url), { type: 'module' });
+    const worker = new Worker(new URL('./workers/optimizationWorker.ts', import.meta.url), { type: 'module' });
     worker.onmessage = (e) => {
       if (e.data.type === 'progress') {
         setProgress(e.data.generation);
@@ -24,6 +24,10 @@ function App() {
         worker.terminate();
       }
     };
+    worker.onerror = () => {
+      setIsRunning(false);
+    };
+    worker.postMessage('start');
   };
 
   return (
